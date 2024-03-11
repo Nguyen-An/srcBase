@@ -8,7 +8,7 @@ let isAuth = async (req, res, next) => {
             req.user = decoded;
             next()
         } catch (error) {
-            return res.status(403).json({ message: '"Ma token khong hop le' });
+            return res.status(403).json({ message: 'Ma token khong hop le' });
         }
     } else {
         return res.status(401).json({ message: 'Bạn chưa gửi mã token' });

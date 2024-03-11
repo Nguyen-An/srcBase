@@ -6,10 +6,10 @@ let make = (user) => {
     return new Promise((resolve, reject) => {
         jwt.sign(
             { data: user },
-            _APP.ACCESS_TOKEN,
+            _CONST.JWT_CONST.ACCESS_TOKEN,
             {
                 algorithm: "HS256",
-                expiresIn: _CONST.JWT_CONST.ACCESS_TOKEN,
+                expiresIn: _CONST.JWT_CONST.TOKEN_TIME_LIFE,
             },
             (err, _token) => {
                 if (err) reject(err);
@@ -24,7 +24,7 @@ let check = (token) => {
     return new Promise((resolve, reject) => {
         jwt.verify(
             token,
-            _CONST.JWT_CONST.TOKEN_TIME_LIFE,
+            _CONST.JWT_CONST.ACCESS_TOKEN,
             (err, decoded) => {
                 if (err) reject(err);
                 resolve(decoded);

@@ -13,4 +13,13 @@ Account.account_getlist = async () => {
     })
 }
 
+Account.account_getdetail = async (user) => { 
+    return new Promise((resolve, reject) => { 
+        db.query("select * from Account acc where acc.username = ? and acc.password = ?;", [user.username, user.password], (err, result) => {
+            if (err) reject(null)
+            resolve(result)
+        })
+    })
+}
+
 module.exports = Account
